@@ -7,6 +7,17 @@ class ChannelsController < ApplicationController
     @channels = Channel.all
   end
 
+
+  def get_untouched_channels
+    channel_count = params["count"] || 10
+
+    results = Channel.where(:progress => "").limit(channel_count.to_i)
+
+    render :json => results
+
+    results.update_all(:progress => "distributed")
+  end
+
   # GET /channels/1
   # GET /channels/1.json
   def show

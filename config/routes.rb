@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :channels
+
 
   root 'home#index'
 
   # count
   get 'links/untouched' => 'links#get_untouched_links'
+  get 'channels/untouched' => 'channels#get_untouched_channels'
 
   post 'links/progress/update' => 'api#post_update_progress'
   post 'api/link' => 'api#create'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   post 'api/channels/create' => "api#channel_create"
 
   resources :links
+  resources :channels
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
