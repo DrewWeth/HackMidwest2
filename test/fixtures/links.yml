@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full_link: MyString
+  youtube_link: MyString
+  progress: MyString
+  seen_count: 1
+  video_id: 1
+  transcript_id: 1
+
+two:
+  full_link: MyString
+  youtube_link: MyString
+  progress: MyString
+  seen_count: 1
+  video_id: 1
+  transcript_id: 1
