@@ -1,9 +1,6 @@
 source 'https://rubygems.org'
 
-
-
 gem 'quiet_assets'
-
 # gem 'colorize'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :channels
+
   root 'home#index'
 
   # count
@@ -6,6 +8,11 @@ Rails.application.routes.draw do
 
   post 'links/progress/update' => 'api#post_update_progress'
   post 'api/link' => 'api#create'
+
+
+  post 'api/channels/update' => "api#channel_update"
+  post 'api/channels/create' => "api#channel_create"
+
   resources :links
 
   # The priority is based upon order of creation: first created -> highest priority.

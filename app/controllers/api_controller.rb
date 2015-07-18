@@ -38,4 +38,46 @@ class ApiController < ApplicationController
 
   end
 
+
+
+  def channel_create
+    args = {}
+    args["url"] = params["url"]
+
+    channel = Channel.new(args)
+
+    if args["url"]
+
+      if channel.save
+        render :json => channel
+      else
+        render :json => "Could not save. Duplicate data?"
+      end
+    else
+      render :json => "url not provided"
+    end
+  end
+
+  def channel_update
+    args = {}
+    args["url"] = params["url"]
+    args["progress"] = params["progress"]
+
+    if args["url"] and args["progress"]
+      if channel = Channel.where(:url => args["url"]).take
+        channel.progress = args["progress"]
+        if channel.save
+          render :json => channel
+        else
+          render :json => "Error saving."
+        end
+      else
+        render :json => "Channel not found"
+      end
+    else
+      render :json => "url and progress not provided"
+    end
+
+  end
+
 end

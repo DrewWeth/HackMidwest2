@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531010221) do
+ActiveRecord::Schema.define(version: 20150718185633) do
+
+  create_table "channels", force: true do |t|
+    t.string   "url"
+    t.string   "name"
+    t.string   "progress"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "links", force: true do |t|
     t.string   "full_link"
