@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   post 'links/progress/update' => 'api#post_update_progress'
   post 'api/link' => 'api#create'
 
-
   post 'api/channels/update' => "api#channel_update"
   post 'api/channels/create' => "api#channel_create"
 
