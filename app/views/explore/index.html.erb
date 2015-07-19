@@ -59,7 +59,7 @@
     result.forEach(function(r){
 
       var toAppend = "<li class='list-group-item'>"
-      toAppend += "<div class=\"media\"><div class=\"media-left\" style=\"width:70px\"><a href=\""+ r["full_link"] +"\"><img class=\"img-responsive media-object\" src=\""+ r["thumbnail"] +"\"></a></div><div class=\"media-body\">"
+      toAppend += "<div class=\"media\"><div class=\"media-left\" style=\"width:70px\"><a href=\""+ r["full_link"] +"\"><img class=\"img-responsive media-object\" src=\""+ r["thumbnail"] +"\"></a><div>"+ r["views"].to_s  +" views</div></div><div class=\"media-body\">"
       toAppend += "<h4 class=\"media-heading\">"+ r["title"] +"</h4>"
       toAppend += "<p class=\"list-group-item-text\">"
       toAppend += r["compressed_text"] + "</p>"
