@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718185633) do
+ActiveRecord::Schema.define(version: 20150719050528) do
 
   create_table "channels", force: true do |t|
     t.string   "url"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150718185633) do
     t.string   "progress"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "priority",   default: 0
   end
 
   create_table "links", force: true do |t|
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150718185633) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "transcript_provided"
+    t.integer  "priority",            default: 0
   end
 
 end

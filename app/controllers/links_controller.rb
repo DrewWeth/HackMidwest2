@@ -4,7 +4,8 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    count = params["count"] || 200
+    @links = Link.last(count)
   end
 
   # GET /links/1
@@ -24,7 +25,7 @@ class LinksController < ApplicationController
   def get_untouched_links
     link_count = params["count"] || 10
 
-    results = Link.where(:progress => nil).limit(link_count.to_i)
+    results = Link.where("progress = ? or progress = ?", nil, '').order("priority DESC").limit(link_count.to_i)
 
     render :json => results
 
@@ -87,6 +88,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:full_link, :youtube_link, :progress, :seen_count, :video_id, :transcript_id)
+      params.require(:link).permit(:full_link, :youtube_link, :progress, :seen_count, :video_id, :transcript_id, :priority)
     end
 end

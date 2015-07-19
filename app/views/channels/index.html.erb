@@ -6,6 +6,7 @@
       <th>Url</th>
       <th>Name</th>
       <th>Progress</th>
+      <th>Priority</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,8 @@
         <td><%= channel.url %></td>
         <td><%= channel.name %></td>
         <td><%= channel.progress %></td>
+        <td><%= channel.priority %></td>
+
         <td><%= link_to 'Show', channel %></td>
         <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
         <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>

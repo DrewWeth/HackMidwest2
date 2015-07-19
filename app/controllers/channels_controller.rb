@@ -4,14 +4,14 @@ class ChannelsController < ApplicationController
   # GET /channels
   # GET /channels.json
   def index
-    @channels = Channel.all
+    count = params["count"] || 200
+    @channels = Channel.last(count)
   end
-
 
   def get_untouched_channels
     channel_count = params["count"] || 10
 
-    results = Channel.where(:progress => nil).limit(channel_count.to_i)
+    results = Channel.where("progress = ? or progress = ?", nil, '').order("priority DESC").limit(channel_count.to_i)
 
     render :json => results
 
@@ -80,6 +80,6 @@ class ChannelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def channel_params
-      params.require(:channel).permit(:url, :name, :progress)
+      params.require(:channel).permit(:url, :name, :progress, :priority)
     end
 end
