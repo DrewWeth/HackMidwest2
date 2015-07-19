@@ -51,18 +51,18 @@
   });
 
   function highlightSearchTerm(term){
-    $("#results").html($("#results").html().replace(/term*/g, "<span class='highlight'>"+term.toUpperCase()+"</span>"));
+    $("#results").html($("#results").html().replace(/term*/g, "<span class='highlight'>"+term.toString() +"</span>"));
   }
 
 
   function parseResults(result){
     result.forEach(function(r){
-      var title = "Title unavailable"
+      var title = ""
       if (r["title"] != null){
         title = r["title"]
       }
       var toAppend = "<li class='list-group-item'>"
-      toAppend += "<div class=\"media\"><div class=\"media-left\" style=\"width:20%\"><a target=\"_blank\" href=\""+ r["video_link"] +"\"><img class=\"img-responsive media-object\" src=\""+ r["thumbnail"] +"\"></a><div>"+ r["views"].to_s  +" views</div></div><div class=\"media-body\">"
+      toAppend += "<div class=\"media\"><div class=\"media-left\" style=\"width:22%\"><a target=\"_blank\" href=\""+ r["video_link"] +"\"><img class=\"img-responsive media-object\" src=\""+ r["thumbnail"] +"\"></a><div>"+ r["views"].toString()  +" views</div></div><div class=\"media-body\">"
       toAppend += "<h4 class=\"media-heading\">"+ title +"</h4>"
       toAppend += "<p class=\"list-group-item-text\">"
       toAppend += r["compressed_text"] + "</p>"
