@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'explore' => "explore#index", :as => "explore"
+
   root 'home#index'
 
   # count
@@ -13,6 +15,11 @@ Rails.application.routes.draw do
   post 'api/channels/update' => "api#channel_update"
   post 'api/channels/create' => "api#channel_create"
 
+  post 'api/videos/create' => "api#create_video"
+
+  get 'explore/search' => 'explore#search'
+
+  resources :videos
   resources :links
   resources :channels
 

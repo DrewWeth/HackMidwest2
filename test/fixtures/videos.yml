@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transcript: MyText
+  compressed_text: MyText
+  channel_id: 1
+  link_id: 1
+  views: 1
+  thumbnail: MyString
+
+two:
+  transcript: MyText
+  compressed_text: MyText
+  channel_id: 1
+  link_id: 1
+  views: 1
+  thumbnail: MyString

@@ -1,0 +1,35 @@
+<h1>Listing videos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Transcript</th>
+      <th>Compressed text</th>
+      <th>Channel</th>
+      <th>Link</th>
+      <th>Views</th>
+      <th>Thumbnail</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @videos.each do |video| %>
+      <tr>
+        <td><%= video.transcript %></td>
+        <td><%= video.compressed_text %></td>
+        <td><%= video.channel_id %></td>
+        <td><%= video.link_id %></td>
+        <td><%= video.views %></td>
+        <td><%= video.thumbnail %></td>
+        <td><%= link_to 'Show', video %></td>
+        <td><%= link_to 'Edit', edit_video_path(video) %></td>
+        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Video', new_video_path %>

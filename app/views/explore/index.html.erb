@@ -1,0 +1,68 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<style>
+.highlight{
+  background-color: yellow;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<form id="search_form">
+  <input id="search" name="s" type="text">
+  <input type="submit" value="Search"/>
+</form>
+<div id="results">
+  <div id="count"></div>
+  <div id="occurances"></div>
+
+  <ul class="list-group" id="list"></ul>
+</div>
+
+<script>
+  var searchTerm;
+  $(document).ready(function(){
+    searchTerm = ""
+  });
+
+  $("#search_form").submit(function(){
+    $.ajax({url:"/explore/search", success: function(result){
+        parseResults(result);
+        $("#count").html(result.length + " video match(es)")
+        var term = $("#search").val();
+        var occurances = $("#results").html().match(/term*/g).length
+        $("#occurances").html(occurances + " occurances");
+
+        highlightSearchTerm(term);
+
+      }
+
+    })
+    return false;
+  });
+
+  function highlightSearchTerm(term){
+    $("#results").html($("#results").html().replace(/term*/g, "<span class='highlight'>"+term.toUpperCase()+"</span>"));
+  }
+
+
+  function parseResults(result){
+    result.forEach(function(r){
+
+      var toAppend = "<li class='list-group-item'>"
+      toAppend += "<h4 class=\"list-group-item-heading\">Test</h4>"
+      toAppend += "<p class=\"list-group-item-text\">"
+      toAppend += r["compressed_text"] + "</p></li>";
+      $('#list').append(toAppend);
+      console.log(r);
+    });
+  }
+
+</script>

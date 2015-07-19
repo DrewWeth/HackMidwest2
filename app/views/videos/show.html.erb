@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Transcript:</strong>
+  <%= @video.transcript %>
+</p>
+
+<p>
+  <strong>Compressed text:</strong>
+  <%= @video.compressed_text %>
+</p>
+
+<p>
+  <strong>Channel:</strong>
+  <%= @video.channel_id %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @video.link_id %>
+</p>
+
+<p>
+  <strong>Views:</strong>
+  <%= @video.views %>
+</p>
+
+<p>
+  <strong>Thumbnail:</strong>
+  <%= @video.thumbnail %>
+</p>
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>

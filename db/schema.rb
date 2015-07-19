@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719050528) do
+ActiveRecord::Schema.define(version: 20150719110850) do
 
   create_table "channels", force: true do |t|
     t.string   "url"
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(version: 20150719050528) do
     t.datetime "updated_at"
     t.boolean  "transcript_provided"
     t.integer  "priority",            default: 0
+  end
+
+  create_table "videos", force: true do |t|
+    t.text     "transcript"
+    t.text     "compressed_text"
+    t.integer  "channel_id"
+    t.integer  "link_id"
+    t.integer  "views"
+    t.string   "thumbnail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "ups"
+    t.integer  "downs"
+    t.string   "video_link"
   end
 
 end

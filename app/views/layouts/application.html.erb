@@ -6,13 +6,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 </head>
 <body>
 <%= render "layouts/links" %>
+<div class="container-fluid">
 
 <%= yield %>
-
-<%= render "layouts/footer" %>
+</div>
+<!-- <%= render "layouts/footer" %> -->
 
 </body>
 </html>

@@ -77,7 +77,14 @@ class ApiController < ApplicationController
     else
       render :json => "url and progress not provided"
     end
-
   end
+
+  def create_video
+    request_body = JSON.parse(request.body.read)
+    puts request_body
+    new_video = Video.create(:transcript => request_body["transcript"], :compressed_text => request_body["transcript"].gsub(/([0-9]?[0-9]):[0-9][0-9] +/, ""), :thumbnail => request_body["details"]["thumbnail"], :views => request_body["details"]["views"], :video_link => request_body["details"]["link"] )
+    render :json => new_video
+  end
+
 
 end
