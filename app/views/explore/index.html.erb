@@ -34,6 +34,7 @@
 
   $("#search_form").submit(function(){
     $("#list").html("");
+    $("#occurances").html("");
     var term = $("#search").val();
     $.ajax({url:"/explore/search",
     data: {s: term},
@@ -41,7 +42,7 @@
         parseResults(result);
         $("#count").html(result.length + " video match(es)")
 
-        var occurances = $("#results").html().match(/term*/g).length
+        var occurances = $("#results").html().match(/term/g).length
         $("#occurances").html(occurances + " occurances");
 
         highlightSearchTerm(term);
@@ -53,7 +54,7 @@
   });
 
   function highlightSearchTerm(term){
-    $("#results").html($("#results").html().replace(/term*/g, "<span class='highlight'>"+term.toString() +"</span>"));
+    $("#results").html($("#results").html().replace(/term/g, "<span class='highlight'>"+term.toString() +"</span>"));
   }
 
 
