@@ -41,8 +41,8 @@
      success: function(result){
         parseResults(result);
         $("#count").html(result.length + " video match(es)")
-
-        var occurances = $("#results").html().match(/term/g).length
+        var reg = new RegExp(term,"g")
+        var occurances = $("#results").html().match(reg).length
         $("#occurances").html(occurances + " occurances");
 
         highlightSearchTerm(term);
@@ -54,7 +54,8 @@
   });
 
   function highlightSearchTerm(term){
-    $("#results").html($("#results").html().replace(/term/g, "<span class='highlight'>"+term.toString() +"</span>"));
+    var reg = new RegExp(term,"g")
+    $("#results").html($("#results").html().replace(reg, "<span class='highlight'>"+term +"</span>"));
   }
 
 
@@ -65,7 +66,7 @@
         title = r["title"]
       }
       var toAppend = "<li class='list-group-item'>"
-      toAppend += "<div class=\"media\"><div class=\"media-left\" style=\"width:22%\"><a target=\"_blank\" href=\""+ r["video_link"] +"\"><img class=\"img-responsive media-object\" src=\""+ r["thumbnail"] +"\"></a><div>"+ r["views"].toString()  +" views</div></div><div class=\"media-body\">"
+      toAppend += "<div class=\"media\"><div class=\"media-left\" style=\"width:22%\"><a target=\"_blank\" href=\""+ r["video_link"] +"\"><img class=\"img-responsive media-object\" src=\""+ r["thumbnail"] +"\"></a><div>"+ r["views"]  +" views</div></div><div class=\"media-body\">"
       toAppend += "<h4 class=\"media-heading\">"+ title +"</h4>"
       toAppend += "<p class=\"list-group-item-text\">"
       toAppend += r["compressed_text"] + "</p>"
