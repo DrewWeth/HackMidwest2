@@ -34,11 +34,13 @@
 
   $("#search_form").submit(function(){
     $("#list").html("");
-
-    $.ajax({url:"/explore/search", success: function(result){
+    var term = $("#search").val();
+    $.ajax({url:"/explore/search",
+    data: {s: term},
+     success: function(result){
         parseResults(result);
         $("#count").html(result.length + " video match(es)")
-        var term = $("#search").val();
+
         var occurances = $("#results").html().match(/term*/g).length
         $("#occurances").html(occurances + " occurances");
 
