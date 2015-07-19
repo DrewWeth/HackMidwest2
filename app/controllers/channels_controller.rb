@@ -11,7 +11,7 @@ class ChannelsController < ApplicationController
   def get_untouched_channels
     channel_count = params["count"] || 10
 
-    results = Channel.where("progress = ? or progress = ?", nil, '').order("priority DESC").limit(channel_count.to_i)
+    results = Channel.where("progress = ? or progress is null", '').order("priority DESC").limit(channel_count.to_i)
 
     render :json => results
 

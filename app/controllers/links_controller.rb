@@ -25,7 +25,7 @@ class LinksController < ApplicationController
   def get_untouched_links
     link_count = params["count"] || 10
 
-    results = Link.where("progress = ? or progress = ?", nil, '').order("priority DESC").limit(link_count.to_i)
+    results = Link.where("progress = ? or progress is null", '').order("priority DESC").limit(link_count.to_i)
 
     render :json => results
 
