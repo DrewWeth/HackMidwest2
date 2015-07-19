@@ -33,6 +33,8 @@
   });
 
   $("#search_form").submit(function(){
+    $("#list").html("");
+
     $.ajax({url:"/explore/search", success: function(result){
         parseResults(result);
         $("#count").html(result.length + " video match(es)")
@@ -57,9 +59,13 @@
     result.forEach(function(r){
 
       var toAppend = "<li class='list-group-item'>"
-      toAppend += "<h4 class=\"list-group-item-heading\">Test</h4>"
+      toAppend += "<div class=\"media\"><div class=\"media-left\" style=\"width:70px\"><a href=\""+ r["full_link"] +"\"><img class=\"media-object\" src=\""+ r["thumbnail"] +"\"></a></div><div class=\"media-body\">"
       toAppend += "<p class=\"list-group-item-text\">"
-      toAppend += r["compressed_text"] + "</p></li>";
+      toAppend += r["compressed_text"] + "</p>"
+      toAppend += "</div></div>"
+      toAppend += "</li>";
+
+
       $('#list').append(toAppend);
       console.log(r);
     });
