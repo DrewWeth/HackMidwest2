@@ -33,12 +33,14 @@
   });
 
   $("#search_form").submit(function(){
+    $("#results").append("<center><img id=\"wait\" src=\"http://i.stack.imgur.com/FhHRx.gif\"></img></center>")
     $("#list").html("");
     $("#occurances").html("");
     var term = $("#search").val();
     $.ajax({url:"/explore/search",
     data: {s: term},
      success: function(result){
+        $("#wait").remove();
         parseResults(result);
         $("#count").html(result.length + " video match(es)")
         var reg = new RegExp(term,"g")
