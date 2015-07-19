@@ -11,14 +11,24 @@
 .highlight{
   background-color: yellow;
 }
+#stats-div{
+  position:absolute;
+  right:20px;
+  bottom:20px;
+}
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <form id="search_form">
-  <input id="search" name="s" type="text">
+  <input style="margin-top:10px" id="search" name="s" type="text">
   <input type="submit" value="Search"/>
 </form>
+
+
+<div id="stats-div">
+  <%= @data %>
+</div>
 <div id="results">
   <div id="count"></div>
   <div id="occurances"></div>
@@ -75,10 +85,24 @@
       toAppend += "</div></div>"
       toAppend += "</li>";
 
-
       $('#list').append(toAppend);
       console.log(r);
     });
   }
 
+</script>
+<script>
+var toggled = false;
+$("#stats").click(function(){
+if (!toggled){
+  toggled = true;
+  $.ajax({url:"/explore/stats",
+   success: function(result){
+     console.log(result);
+      $("#stats-div").html(JSON.stringify(result));
+    }
+  })
+  return false;
+}
+});
 </script>

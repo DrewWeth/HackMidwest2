@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
 
+
   get 'explore' => "explore#index", :as => "explore"
 
-  root 'home#index'
+  root 'explore#index'
 
   # count
   get 'links/untouched' => 'links#get_untouched_links'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   post 'api/videos/create' => "api#create_video"
 
   get 'explore/search' => 'explore#search'
+  get 'explore/stats' => 'explore#stats'
 
   resources :videos
   resources :links
