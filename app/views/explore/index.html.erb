@@ -43,7 +43,7 @@
         $("#wait").remove();
         parseResults(result);
         $("#count").html(result.length + " video match(es)")
-        var reg = new RegExp(term,"g")
+        var reg = new RegExp(term,"gi")
         var occurances = $("#results").html().match(reg).length
         $("#occurances").html(occurances + " occurances");
 
@@ -56,7 +56,7 @@
   });
 
   function highlightSearchTerm(term){
-    var reg = new RegExp(term,"g")
+    var reg = new RegExp(term,"gi")
     $("#results").html($("#results").html().replace(reg, "<span class='highlight'>"+term +"</span>"));
   }
 
