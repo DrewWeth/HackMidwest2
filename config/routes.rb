@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post 'api/channels/create' => "api#channel_create"
 
   post 'api/videos/create' => "api#create_video"
+  post 'api/elastic/create' => "api#elastic_create"
 
   get 'explore/search' => 'explore#search'
   get 'explore/stats' => 'explore#stats'

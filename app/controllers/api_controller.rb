@@ -38,7 +38,18 @@ class ApiController < ApplicationController
 
   end
 
+  def elastic_create
+    anti_bot = params["pass"]
+	if anti_bot.eql? "noentry" 
+		if body = JSON.parse(request.body.read)
+			render :json => post_json("http://localhost:9200/ghost/videos", body) 
+		else
+			render :json => "Cannot parse request.body.read"	
+	else
+		render :json => "Password incorrect."
+	end	
 
+  end
 
   def channel_create
     args = {}
@@ -86,5 +97,13 @@ class ApiController < ApplicationController
     render :json => new_video
   end
 
-
+	private
+	def post_json(url, content)
+		uri = URI(url)
+		http = Net::HTTP.new(uri.host, uri.port)
+		req = Net::HTTP::Post.new(uri.path, initheader = {'Content-Type' =>'application/json'})
+		req.body = content.to_json
+		res = http.request (req)
+		return res.body
+	end
 end
