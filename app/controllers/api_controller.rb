@@ -45,6 +45,7 @@ class ApiController < ApplicationController
 			render :json => post_json("http://localhost:9200/ghost/videos", body) 
 		else
 			render :json => "Cannot parse request.body.read"	
+		end
 	else
 		render :json => "Password incorrect."
 	end	
