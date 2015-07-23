@@ -4,4 +4,5 @@ class Link < ActiveRecord::Base
   validates_uniqueness_of :youtube_link
   validates_uniqueness_of :full_link
 
+
 end

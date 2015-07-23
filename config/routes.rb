@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post 'api/channels/update' => "api#channel_update"
   post 'api/channels/create' => "api#channel_create"
 
+  post "api/link/elasticid" => "api#post_elastic_id"
+
   post 'api/videos/create' => "api#create_video"
   post 'api/elastic/create' => "api#elastic_create"
 
