@@ -2,20 +2,19 @@ class ApiController < ApplicationController
   skip_before_filter  :verify_authenticity_token
 
   def post_update_progress
-    youtube_link = params["youtube"].to_s
-    progress = params["progress"].to_s
+    youtube_link = params["youtube"]
+    progress = params["progress"]
 
-    if not youtube_link.blank? or not progress.blank?
-      if result = Link.where(:full_link =>youtube_link).take
+    if youtube_link and progress
+      if result = Link.where(:youtube_link =>youtube_link).take
         result.progress = progress
         result.save
         render :json => result
       else
         render :json => result
       end
-
     else
-      render :json => "FAILED. Missing youtube_link or progress. " + params.to_s
+      render :json => "FAILED. Missing youtube or progress. " + params.to_s
     end
   end
 
